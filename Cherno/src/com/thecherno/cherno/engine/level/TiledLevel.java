@@ -63,8 +63,9 @@ public class TiledLevel extends Level {
 		int y0 = yOffset / tileSize;
 		int y1 = (int) (y0 + screen.getHeight() / screen.getScale() / tileSize) + 2;
 		// System.out.println("Boundaries: " + x0 + "->" + x1 + ", " + y0 + "->" + y1);
-		for (int yy = 0; yy < height; yy++) {
-			for (int xx = 0; xx < width; xx++) {
+		//Only loop through the tiles that we want to render
+		for (int yy = y0; yy < y1; yy++) {
+			for (int xx = x0; xx < x1; xx++) {
 				if (xx < x0 || xx >= x1 || yy < y0 || yy >= y1) continue;
 				Tile tile = getTile(xx, yy);
 				if (tile == null) continue;
